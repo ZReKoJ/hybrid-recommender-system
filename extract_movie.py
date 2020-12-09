@@ -26,7 +26,7 @@ def getInfo(id, count):
         f.close()
         return 1
     else:
-        print(count, r.status_code)
+        print(count, r.text)
         return 0
 
 links = pd.read_csv(LINKS_PATH)
