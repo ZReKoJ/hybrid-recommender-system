@@ -25,7 +25,9 @@ def getInfo(id, count):
         f.write(r.text)
         f.close()
         return 1
-    return 0
+    else:
+        print(count, r.status_code)
+        return 0
 
 links = pd.read_csv(LINKS_PATH)
 to_movies = os.listdir(os.path.abspath(os.path.join(LOCAL_BASE_PATH, 'movies')))
