@@ -5,7 +5,7 @@ import requests
 LOCAL_BASE_PATH = os.path.abspath(os.getcwd())
 LINKS_PATH = os.path.abspath(os.path.join(LOCAL_BASE_PATH, 'dataset', 'links.csv'))
 
-API_KEY = '1fcde7b2'
+API_KEY = '1ad91603'
 URL = 'http://www.omdbapi.com/'
 
 PARAMS = {
