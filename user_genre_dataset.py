@@ -34,8 +34,16 @@ for user_rated in users_rated:
     result.sort(reverse=True, key=lambda genre_rating : genre_rating[1])
 
     json_file[str(user_rated)] = {}
-    json_file[str(user_rated)]['like'] = list(map(lambda genre_rating : genre_rating[0], result[0:getRandomIndex(len(result))]))
-    json_file[str(user_rated)]['detest'] = list(map(lambda genre_rating : genre_rating[0], result[-getRandomIndex(len(result)):len(result)]))
+    like = list(map(lambda genre_rating : genre_rating[0], result[0:getRandomIndex(len(result))]))
+    dislike = list(map(lambda genre_rating : genre_rating[0], result[len(result) - getRandomIndex(len(result)):len(result)]))
+
+    for i in like:
+        if i in dislike:
+            print("Error")
+            exit(1)
+
+    json_file[str(user_rated)]['like'] = like
+    json_file[str(user_rated)]['dislike'] = dislike
 
 f = open(os.path.abspath(os.path.join(LOCAL_BASE_PATH, 'dataset', "user_genre.json")),'w')
 json.dump(json_file, f)
